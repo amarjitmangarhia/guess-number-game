@@ -114,7 +114,7 @@ function App() {
   // Use Reducer Ends
 
   const resetGame = () => {
-    input.current.value = 0;
+    input.current.value = "";
     setWin(false);
     dispatch({
       type: "RESETTODEFAULT",
