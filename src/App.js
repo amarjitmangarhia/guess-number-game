@@ -2,7 +2,7 @@ import React, { useRef, useReducer, useState } from "react";
 
 import "./App.css";
 
-let randomNumber = Math.floor(Math.random() * (20 - 1) + 1);
+// let randomNumber = Math.floor(Math.random() * (20 - 1) + 1);
 
 function App() {
   const [notAllowed, setAllowed] = useState(false);
@@ -43,7 +43,7 @@ function App() {
       return {
         score: state.score,
         highScore: state.highScore,
-        hiddenNumber: randomNumber,
+        hiddenNumber: state.randomNumber,
       };
     }
 
@@ -91,6 +91,13 @@ function App() {
         ...state,
         startGuessing: "Matched!",
       };
+    }
+
+    if (action.type === "GENERATENUMBER") {
+      return {
+        ...state,
+        randomNumber: Math.floor(Math.random() * (20 - 1) + 1),
+      };
     } else {
       return;
     }
@@ -101,6 +108,7 @@ function App() {
     highScore: 0,
     hiddenNumber: "?",
     startGuessing: "Start Guessing...",
+    randomNumber: Math.floor(Math.random() * (20 - 1) + 1),
   });
 
   // Use Reducer Ends
@@ -110,6 +118,10 @@ function App() {
     setWin(false);
     dispatch({
       type: "RESETTODEFAULT",
+    });
+
+    dispatch({
+      type: "GENERATENUMBER",
     });
 
     if (state.score <= 0) {
@@ -127,7 +139,7 @@ function App() {
     }
     let convertToInt = parseInt(inputValue);
 
-    if (randomNumber === convertToInt) {
+    if (state.randomNumber === convertToInt) {
       setAllowed(false);
       setWin(true);
       dispatch({
@@ -147,13 +159,13 @@ function App() {
       });
 
       input.current.value = "";
-    } else if (randomNumber < convertToInt) {
+    } else if (state.randomNumber < convertToInt) {
       setAllowed(false);
 
       dispatch({
         type: "HIGH",
       });
-      console.log(randomNumber);
+      console.log(state.randomNumber);
 
       if (state.score > 0) {
         dispatch({
@@ -164,13 +176,13 @@ function App() {
           type: "LOST",
         });
       }
-    } else if (randomNumber > convertToInt) {
+    } else if (state.randomNumber > convertToInt) {
       setAllowed(false);
 
       dispatch({
         type: "LOW",
       });
-      console.log(randomNumber);
+      console.log(state.randomNumber);
 
       if (state.score > 0) {
         dispatch({
