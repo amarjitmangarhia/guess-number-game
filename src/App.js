@@ -107,7 +107,7 @@ function App() {
 
   const resetGame = () => {
     input.current.value = 0;
-    // setStartGuessing("Start Guessing...");
+    setWin(false);
     dispatch({
       type: "RESETTODEFAULT",
     });
