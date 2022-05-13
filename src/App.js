@@ -142,6 +142,7 @@ function App() {
     if (state.randomNumber === convertToInt) {
       setAllowed(false);
       setWin(true);
+      inputValue.blur();
       dispatch({
         type: "SUCCESS",
       });
@@ -165,6 +166,8 @@ function App() {
       dispatch({
         type: "HIGH",
       });
+      inputValue.focus();
+
       console.log(state.randomNumber);
 
       if (state.score > 0) {
@@ -182,6 +185,8 @@ function App() {
       dispatch({
         type: "LOW",
       });
+      inputValue.focus();
+
       console.log(state.randomNumber);
 
       if (state.score > 0) {
