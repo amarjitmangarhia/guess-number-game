@@ -5,6 +5,49 @@ import "./App.css";
 // let randomNumber = Math.floor(Math.random() * (20 - 1) + 1);
 
 function App() {
+  // const items = [
+  //   {
+  //     number: 1,
+  //     id: 1,
+  //   },
+  //   {
+  //     number: 2,
+  //     id: 2,
+  //   },
+  //   {
+  //     number: 3,
+  //     id: 3,
+  //   },
+  //   {
+  //     number: 4,
+  //     id: 4,
+  //   },
+  //   {
+  //     number: 5,
+  //     id: 5,
+  //   },
+  //   {
+  //     number: 6,
+  //     id: 6,
+  //   },
+  //   {
+  //     number: 7,
+  //     id: 7,
+  //   },
+  //   {
+  //     number: 8,
+  //     id: 8,
+  //   },
+  //   {
+  //     number: 9,
+  //     id: 9,
+  //   },
+  //   {
+  //     number: 10,
+  //     id: 10,
+  //   },
+  // ];
+
   const [notAllowed, setAllowed] = useState(false);
   const [win, setWin] = useState(false);
   const input = useRef();
@@ -26,6 +69,8 @@ function App() {
 
     if (action.type === "RESET") {
       return {
+        hiddenNumber: "?",
+        startGuessing: "Start Guessing...",
         score: 20,
         highScore: state.highScore,
       };
@@ -108,7 +153,7 @@ function App() {
     highScore: 0,
     hiddenNumber: "?",
     startGuessing: "Start Guessing...",
-    randomNumber: Math.floor(Math.random() * (20 - 1) + 1),
+    randomNumber: Math.floor(Math.random() * (10 - 1) + 1),
   });
 
   // Use Reducer Ends
@@ -124,7 +169,7 @@ function App() {
       type: "GENERATENUMBER",
     });
 
-    if (state.score <= 0) {
+    if (state.score === 0) {
       dispatch({
         type: "RESET",
       });
