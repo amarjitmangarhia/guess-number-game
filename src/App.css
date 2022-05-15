@@ -269,9 +269,9 @@
 }
 
 .box {
+  transition: 0.2s;
   height: 50px;
   width: 50px;
-  background-color: white;
   color: black;
   padding: 10px;
 }

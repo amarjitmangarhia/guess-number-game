@@ -2,52 +2,7 @@ import React, { useRef, useReducer, useState } from "react";
 
 import "./App.css";
 
-// let randomNumber = Math.floor(Math.random() * (20 - 1) + 1);
-
 function App() {
-  // const items = [
-  //   {
-  //     number: 1,
-  //     id: 1,
-  //   },
-  //   {
-  //     number: 2,
-  //     id: 2,
-  //   },
-  //   {
-  //     number: 3,
-  //     id: 3,
-  //   },
-  //   {
-  //     number: 4,
-  //     id: 4,
-  //   },
-  //   {
-  //     number: 5,
-  //     id: 5,
-  //   },
-  //   {
-  //     number: 6,
-  //     id: 6,
-  //   },
-  //   {
-  //     number: 7,
-  //     id: 7,
-  //   },
-  //   {
-  //     number: 8,
-  //     id: 8,
-  //   },
-  //   {
-  //     number: 9,
-  //     id: 9,
-  //   },
-  //   {
-  //     number: 10,
-  //     id: 10,
-  //   },
-  // ];
-
   const [notAllowed, setAllowed] = useState(false);
   const [win, setWin] = useState(false);
   const input = useRef();
@@ -109,7 +64,6 @@ function App() {
     if (action.type === "LOST") {
       return {
         ...state,
-
         startGuessing: "You Have Lost The Game!",
       };
     }
@@ -117,7 +71,6 @@ function App() {
     if (action.type === "MATCHED") {
       return {
         ...state,
-
         startGuessing: "Matched!",
       };
     }
@@ -210,7 +163,7 @@ function App() {
       dispatch({
         type: "HIGH",
       });
-      console.log(state.randomNumber);
+      // console.log(state.randomNumber);
 
       if (state.score > 0) {
         dispatch({
@@ -227,7 +180,6 @@ function App() {
       dispatch({
         type: "LOW",
       });
-      console.log(state.randomNumber);
 
       if (state.score > 0) {
         dispatch({
@@ -313,3 +265,77 @@ function App() {
 }
 
 export default App;
+
+//
+
+// start
+
+// const [data, setData] = useState([
+//   {
+//     number: 1,
+//     id: 1,
+//   },
+//   {
+//     number: 2,
+//     id: 2,
+//   },
+//   {
+//     number: 3,
+//     id: 3,
+//   },
+//   {
+//     number: 4,
+//     id: 4,
+//   },
+//   {
+//     number: 5,
+//     id: 5,
+//   },
+//   {
+//     number: 6,
+//     id: 6,
+//   },
+//   {
+//     number: 7,
+//     id: 7,
+//   },
+//   {
+//     number: 8,
+//     id: 8,
+//   },
+//   {
+//     number: 9,
+//     id: 9,
+//   },
+//   {
+//     number: 10,
+//     id: 10,
+//   },
+// ]);
+
+// const changeColorFunction = (event) => {
+//   event.target.style.background = "green";
+// };
+
+// const [check, setCheck] = useState(false);
+
+// const deleteItem = (id, event) => {
+//   let ranNum = state.randomNumber;
+//   console.log(ranNum);
+//   if (ranNum === id) {
+//     changeColorFunction(event);
+//     dispatch({
+//       type: "SUCCESS",
+//     });
+//     setData(data);
+//     setCheck(true);
+//     return;
+//   } else if (!check) {
+//     const removeItem = data.filter((item) => {
+//       return item.id !== id;
+//     });
+//     setData(removeItem);
+//   }
+// };
+
+// end
